@@ -2,10 +2,6 @@ package com.wave.apigateway.util;
 
 import java.io.*;
 
-/**
- * Created by ds on 2019-06-30 오후 9:15.
- */
-
 import java.io.Serializable;
 
 public class Pair<E1, E2> implements Serializable {

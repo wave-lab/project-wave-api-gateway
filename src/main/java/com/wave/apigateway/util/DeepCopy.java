@@ -2,10 +2,6 @@ package com.wave.apigateway.util;
 
 import java.io.*;
 
-/**
- * Created by ds on 2019-06-30 오후 9:18.
- */
-
 public class DeepCopy {
     /**
      * Returns a copy of the object, or null if the object cannot

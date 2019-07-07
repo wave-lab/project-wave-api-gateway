@@ -1,9 +1,5 @@
 package com.wave.apigateway.util;
 
-/**
- * Created by ds on 2019-06-30 오후 9:16.
- */
-
 public class HashCode {
     private static final int SEED = 17;
     private static final long SCALE = 37L;
