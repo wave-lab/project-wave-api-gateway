@@ -1,6 +1,7 @@
 routing:
   paths:
     server:
-      id: main-server
-      prefix: /api
+      id: core-server
+      prefix: /core
+      pattern: /core
       url: http://127.0.0.1:3000
