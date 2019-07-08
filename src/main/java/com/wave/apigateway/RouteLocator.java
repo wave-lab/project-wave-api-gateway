@@ -21,7 +21,6 @@ public class RouteLocator {
 
         final String originURI = httpServletRequest.getRequestURI();
         Route route = getRoute(originURI);
-
         if(route == null) {
             route = routeMap.get("default");
         }

@@ -1,23 +1,44 @@
 package com.wave.apigateway;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class FrontController {
 
-    private RoutingService routingService;
+    private static final Log log = LogFactory.getLog(FrontController.class);
 
-    public FrontController(final RoutingService routingService) {
+    private RoutingService routingService;
+    private RoutingTable routingTable;
+
+    public FrontController(final RoutingService routingService, final RoutingTable routingTable) {
         this.routingService = routingService;
+        this.routingTable = routingTable;
     }
 
-    @GetMapping("/**")
+    @GetMapping("/routes")
+    public ResponseEntity getRoutingTable() {
+        return new ResponseEntity<>(routingTable.getPaths(), HttpStatus.OK);
+    }
+
+    @PostMapping("/routes")
+    public ResponseEntity insertRoutingTable(@RequestBody final Route route) {
+        routingTable.registryRouting(route);
+        return new ResponseEntity<>(routingTable.getPaths(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/routes/{id}")
+    public ResponseEntity deleteRouting(@PathVariable final String id) {
+        routingTable.deleteRouting(id);
+        return new ResponseEntity<>(routingTable.getPaths(), HttpStatus.OK);
+    }
+
+    @RequestMapping("/**")
     public ResponseEntity apiGateway(final HttpServletRequest httpServletRequest,
                                      @RequestBody(required = false) final Object obj) {
         RequestContext context = RequestContext.getCurrentContext();
@@ -27,24 +48,10 @@ public class FrontController {
             routingService.routing();
             return new ResponseEntity<>(context.getResponseBody(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(DefaultRes.FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
+            e.printStackTrace();
+            return new ResponseEntity<>("INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
+        } finally {
+            context.unset();
         }
-    }
-
-    public static class DefaultRes<T> {
-
-        private int status;
-
-        private String message;
-
-        private T data;
-
-        public DefaultRes(final int status, final String message) {
-            this.status = status;
-            this.message = message;
-            this.data = null;
-        }
-
-        public static final DefaultRes FAIL_DEFAULT_RES = new DefaultRes(500, "INTERNAL_SERVER_ERROR");
     }
 }
