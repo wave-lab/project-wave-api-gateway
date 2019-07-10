@@ -1,7 +1,17 @@
 routing:
   paths:
-    server:
+    core-server:
       id: core-server
       prefix: /core
       pattern: /core
-      url: http://127.0.0.1:3000
+      url: http://15.164.70.24:3002
+    playlist-server:
+      id: playlist-server
+      prefix: /pl
+      pattern: /pl
+      url: http://15.164.199.122:3001
+    scheulder-server:
+      id: scheulder-server
+      prefix: /scheduler
+      pattern: /scheduler
+      url: http://15.164.199.122:3000

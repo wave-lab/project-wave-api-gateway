@@ -54,7 +54,6 @@ public class RestTemplatePool {
         final Object requestBody = context.getRequestBody();
 
         final HttpEntity requestEntity = new HttpEntity<>(requestBody, requestHeaders);
-        log.info(httpMethod + " " + path);
         final ResponseEntity<Object> responseEntity =
                 restTemplate.exchange(path, httpMethod, requestEntity, new ParameterizedTypeReference<Object>() {});
 
@@ -73,7 +72,6 @@ public class RestTemplatePool {
                     Enumeration<String> values = request.getHeaders(name);
                     while (values.hasMoreElements()) {
                         String value = values.nextElement();
-                        System.out.println(name + " " + value);
                         headers.add(name, value);
                     }
                 }
