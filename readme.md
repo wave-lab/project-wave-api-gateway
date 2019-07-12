@@ -11,7 +11,7 @@
 이 프로젝트에서는 아래 같은 **MAVEN 의존성 프로젝트**가 포함되어있습니다. 
 
 ```
-	<dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
