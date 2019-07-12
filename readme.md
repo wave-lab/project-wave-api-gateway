@@ -93,11 +93,7 @@
 - [Maven](https://maven.apache.org/) - 의존성 관리 프로그램
 - [Tomcat](http://tomcat.apache.org/) - 웹 애플리케이션 서버
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/) - IDE
-- [MySql](https://www.mysql.com/) - DataBase
 - [AWS EC2](https://aws.amazon.com/ko/ec2/?sc_channel=PS&sc_campaign=acquisition_KR&sc_publisher=google&sc_medium=english_ec2_b&sc_content=ec2_e&sc_detail=aws%20ec2&sc_category=ec2&sc_segment=177228231544&sc_matchtype=e&sc_country=KR&s_kwcid=AL!4422!3!177228231544!e!!g!!aws%20ec2&ef_id=WkRozwAAAnO-lPWy:20180412120123:s) - 클라우드 환경 컴퓨팅 시스템
-- [AWS RDS](https://aws.amazon.com/ko/rds/) - 클라우드 환경 데이터베이스 관리 시스템
-- [AWS S3](https://aws.amazon.com/ko/s3/) - 클라우드 환경 객체 스토리지
-- [Docker](https://www.docker.com/) - 컨테이너 기반의 오픈소스 가상화 플랫폼
 
 ## 개발자
 
