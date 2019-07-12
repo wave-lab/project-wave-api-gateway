@@ -4,12 +4,12 @@ routing:
       id: core-server
       prefix: /core
       pattern: /core
-      url: http://15.164.70.24:3002
+      url: http://15.164.70.24:3000
     playlist-server:
       id: playlist-server
       prefix: /pl
       pattern: /pl
-      url: http://15.164.199.122:3001
+      url: http://15.164.155.140:3000
     scheulder-server:
       id: scheulder-server
       prefix: /scheduler

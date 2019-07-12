@@ -54,6 +54,7 @@ public class RestTemplatePool {
         final Object requestBody = context.getRequestBody();
 
         final HttpEntity requestEntity = new HttpEntity<>(requestBody, requestHeaders);
+
         final ResponseEntity<Object> responseEntity =
                 restTemplate.exchange(path, httpMethod, requestEntity, new ParameterizedTypeReference<Object>() {});
 

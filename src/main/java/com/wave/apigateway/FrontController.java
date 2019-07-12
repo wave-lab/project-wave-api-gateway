@@ -4,7 +4,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 public class FrontController {
 
     private static final Log log = LogFactory.getLog(FrontController.class);
+
+    private static final DefaultRes FAIL_DEFAULT_RES = new DefaultRes(500, false, "INTERNAL SERVER ERROR");
 
     private RoutingService routingService;
     private RoutingTable routingTable;
@@ -48,10 +52,10 @@ public class FrontController {
             routingService.routing();
             return new ResponseEntity<>(context.getResponseBody(), HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("INTERNAL_SERVER_ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
         } finally {
             context.unset();
         }
     }
+
 }
